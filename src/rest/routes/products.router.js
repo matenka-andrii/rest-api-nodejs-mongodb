@@ -9,7 +9,7 @@ import validationMiddleware from "../middlewares/validation.middleware";
 import validateTokenMiddleware from "../middlewares/validate-token.middleware";
 
 // Validation schemas
-import { CreateProjectSchema } from "../validators/product/create-project.validator";
+import { CreateProductSchema } from "../validators/product/create-product.validator";
 import { GetProductByIdSchema } from "../validators/product/get-product-by-id.validator";
 import { GetProductsByCategorySchema } from "../validators/product/get-products-by-category.validator";
 import { UpdateProductSchema } from "../validators/product/update-product.validator";
@@ -38,7 +38,7 @@ router.get(
 router.post(
     '/',
     validateTokenMiddleware(),
-    validationMiddleware(CreateProjectSchema),
+    validationMiddleware(CreateProductSchema),
     (req, res) => controller.createProduct(req, res),
 );
 router.put(
