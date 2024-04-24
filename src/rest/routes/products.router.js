@@ -7,6 +7,7 @@ import { ProductsController } from "../controllers/products.controller";
 // Middlewares
 import validationMiddleware from "../middlewares/validation.middleware";
 import validateTokenMiddleware from "../middlewares/validate-token.middleware";
+import redisCacheMiddleware from '../middlewares/redis.middleware';
 
 // Validation schemas
 import { CreateProductSchema } from "../validators/product/create-product.validator";
@@ -21,6 +22,7 @@ const router = new Router();
 router.get(
     '/',
     validateTokenMiddleware(),
+    redisCacheMiddleware({ options: { EX: 60 }, compression: true }),
     (req, res) => controller.getProducts(req, res),
 );
 router.get(
@@ -32,6 +34,7 @@ router.get(
 router.get(
     '/category/:categoryId',
     validateTokenMiddleware(),
+    redisCacheMiddleware({ options: { EX: 60 }, compression: true}),
     validationMiddleware(GetProductsByCategorySchema),
     (req, res) => controller.getProductsByCategory(req, res),
 );

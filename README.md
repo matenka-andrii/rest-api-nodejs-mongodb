@@ -15,6 +15,8 @@
 + `MONGODB_URL=mongodb://mongouser:mongopass@localhost:27017`
 + `JWT_SECRET=jwt_secret`
 + `PORT=3000`
++ `REDIS_URI=redis://:your_password@localhost:6379`
++ `REDIS_PASS=your_password`
 
 5. Start the Docker containers (Note: You must have the Docker Desktop application installed on your system):
 + `docker compose up -d`
