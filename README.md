@@ -1,4 +1,4 @@
-# REST API with Node.js, Express.js and MongoDB
+# REST API with Node.js, Express.js, Redis and MongoDB
 
 ## To start, follow the instructions:
 
